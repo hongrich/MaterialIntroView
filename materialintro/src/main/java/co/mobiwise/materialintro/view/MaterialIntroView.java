@@ -11,6 +11,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.os.Build;
 import android.os.Handler;
+import android.text.Spannable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -586,6 +587,10 @@ public class MaterialIntroView extends RelativeLayout {
         this.textViewInfo.setText(textViewInfo);
     }
 
+    private void setTextViewInfo(Spannable textViewInfo) {
+        this.textViewInfo.setText(textViewInfo);
+    }
+
     private void setTextViewInfoSize(int textViewInfoSize) {
         this.textViewInfo.setTextSize(TypedValue.COMPLEX_UNIT_SP, textViewInfoSize);
     }
@@ -695,6 +700,12 @@ public class MaterialIntroView extends RelativeLayout {
         }
 
         public Builder setInfoText(String infoText) {
+            materialIntroView.enableInfoDialog(true);
+            materialIntroView.setTextViewInfo(infoText);
+            return this;
+        }
+
+        public Builder setInfoText(Spannable infoText) {
             materialIntroView.enableInfoDialog(true);
             materialIntroView.setTextViewInfo(infoText);
             return this;
