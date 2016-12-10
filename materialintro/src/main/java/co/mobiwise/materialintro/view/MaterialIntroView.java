@@ -472,7 +472,10 @@ public class MaterialIntroView extends RelativeLayout {
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.FILL_PARENT);
 
-                if (targetShape.getPoint().y < height / 2) {
+                android.graphics.Rect r = new android.graphics.Rect();
+                targetView.getView().getWindowVisibleDisplayFrame(r);
+
+                if (targetShape.getPoint().y < r.top + r.height() / 2) {
                     ((RelativeLayout) infoView).setGravity(Gravity.TOP);
                     infoDialogParams.setMargins(
                             0,
